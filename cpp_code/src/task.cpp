@@ -3,13 +3,15 @@
 
 using namespace std;
 
+int sum_digits(int numbers);
+
 int main(){
     const int len_sequence = 103;
 	// создание последовательности
 	int sequence[103] {1};
-	int result;
+	int result = 0;
 	for (int i = 1; i < len_sequence; i++) {
-		if (sequence[i-1] % 2 == 0) {
+		if (sum_digits(sequence[i-1]) % 2 == 0) {
 			sequence[i] = sequence[i-1] + 2;
 		} else {
 			sequence[i] = sequence[i-1] + 1;
@@ -28,10 +30,10 @@ int main(){
 
 // функция вычисляющая сумму цифр
 int sum_digits(int number) {
-	string string_number = to_string(number);
-	int result_sum;
-	for (int i = 0; i < string_number.length(); i++) {
-		result_sum += stoi(string_number);
+	int result_sum = 0;
+	while (number > 0) {
+		result_sum += number % 10;
+		number /= 10;
 	}
 	return result_sum;
 }

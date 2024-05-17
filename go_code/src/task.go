@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 func main() {
@@ -31,17 +30,10 @@ func main() {
 
 // функция вычисляющая сумму цифр
 func sum_digits(number int) int {
-	var string_number string = strconv.Itoa(number)
-	var result_sum int64
-	var tmp_num int64
-	var err error
-	for i := 0; i < len(string_number); i++ {
-		tmp_num, err = strconv.ParseInt(string(string_number[i]), 10, 32)
-		if err == nil {
-			result_sum += tmp_num
-		} else {
-			return -1
-		}
+	var result_sum int
+	for number > 0 {
+		result_sum += number % 10
+		number /= 10
 	}
-	return int(result_sum)
+	return result_sum
 }
