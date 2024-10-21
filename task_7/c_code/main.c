@@ -12,5 +12,6 @@ int main(void) {
         }
     }
 
-    printf("%d", count);
+    printf("%d\n", count);
+    return 0;
 }
